@@ -5,6 +5,8 @@ import com.shui.common.utils.R;
 import com.shui.entity.TimeEntity;
 import com.shui.service.TimeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;

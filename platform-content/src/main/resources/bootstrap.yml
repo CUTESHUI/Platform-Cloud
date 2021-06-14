@@ -1,20 +1,35 @@
 server:
-  port: 8085
+  port: 8084
   servlet:
-    context-path: /channel
+    context-path: /content
 
 spring:
   application:
-    name: platform-channel
-  main:
-    allow-bean-definition-overriding: true
+    name: platform-content
+
+  cloud:
+    nacos:
+      discovery:
+        server-addr: ${nacos-host:nacos-host}:${nacos-port:8848}
+        #nacos的命名空间ID，默认是public
+        namespace: ${nacos-namespace:}
+      config:
+        server-addr: ${spring.cloud.nacos.discovery.server-addr}
+        namespace: ${spring.cloud.nacos.discovery.namespace}
+        group: PLATFORM_CLOUD_GROUP
+        file-extension: yaml
+        #指定共享配置，且支持动态刷新
+        extension-configs:
+          - data-id: platform-common.yaml
+            group: ${spring.cloud.nacos.config.group}
+            refresh: true
 
   # mysql
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     druid:
       driver-class-name: com.mysql.cj.jdbc.Driver
-      url: jdbc:mysql://127.0.0.1:3306/platform-channel?useUnicode=true&useSSL=false&characterEncoding=utf8&serverTimezone=UTC
+      url: jdbc:mysql://127.0.0.1:3306/platform-content?useUnicode=true&useSSL=false&characterEncoding=utf8&serverTimezone=UTC
       username: root
       password: chimanloo1004
 
@@ -51,19 +66,3 @@ spring:
           merge-sql: true          # 打开mergeSql(Sql合并)功能
           log-slow-sql: true       # 慢SQL记录(配置超过5秒就是慢，默认是3秒)
           slow-sql-millis: 5000
-
-
-# mybatis-plus
-mybatis-plus:
-  mapper-locations: classpath:/mapper/**/*.xml  # Mapper映射文件
-  typeAliasesPackage: com.shui.entity           # Mybatis数据返回类型别名（默认别名为类名）
-  configuration:
-    map-underscore-to-camel-case: true
-  global-config:
-    db-config:
-      id-type: id_worker
-
-logging:
-  level:
-    com.shui.dao: DEBUG
-
