@@ -1,0 +1,49 @@
+server:
+  port: 18088
+
+spring:
+  application:
+    name: platform-gateway
+
+  cloud:
+    nacos:
+      discovery:
+        server-addr: ${nacos-host:nacos-host}:${nacos-port:8848}
+        #nacos的命名空间ID，默认是public
+        namespace: ${nacos-namespace:}
+      config:
+        server-addr: ${spring.cloud.nacos.discovery.server-addr}
+        namespace: ${spring.cloud.nacos.discovery.namespace}
+        group: PLATFORM_CLOUD_GROUP
+        file-extension: yaml
+        #指定共享配置，且支持动态刷新
+        extension-configs:
+          - data-id: platform-common.yaml
+            group: ${spring.cloud.nacos.config.group}
+            refresh: true
+    gateway:
+      routes:
+        - id: route_baidu
+          uri: http://www.baidu.com
+          predicates:
+            - Path=/baidu
+        - id: route_study
+          uri: lb://platform-study
+          predicates:
+            - Path=/study/**
+        - id: route_question
+          uri: lb://platform-question
+          predicates:
+            - Path=/question/**
+        - id: route_content
+          uri: lb://platform-content
+          predicates:
+            - Path=/content/**
+        - id: route_member
+          uri: lb://platform-member
+          predicates:
+            - Path=/member/**
+        - id: route_channel
+          uri: lb://platform-channel
+          predicates:
+            - Path=/channel/**

@@ -10,6 +10,7 @@
     </parent>
 
     <artifactId>platform-question</artifactId>
+    <packaging>jar</packaging>
     <name>platform-question</name>
     <description>问题服务</description>
 

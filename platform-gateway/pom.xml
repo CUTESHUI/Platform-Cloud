@@ -9,17 +9,31 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>platform-member</artifactId>
+    <artifactId>platform-gateway</artifactId>
     <packaging>jar</packaging>
-    <name>platform-member</name>
-    <description>会员服务</description>
+    <name>platform-gateway</name>
+    <description>网关</description>
 
     <dependencies>
 
         <dependency>
-            <groupId>com.shui</groupId>
-            <artifactId>platform-common</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-webflux</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-gateway</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
         </dependency>
 
     </dependencies>

@@ -10,6 +10,7 @@
     </parent>
 
     <artifactId>platform-content</artifactId>
+    <packaging>jar</packaging>
     <name>platform-content</name>
     <description>内容服务</description>
 

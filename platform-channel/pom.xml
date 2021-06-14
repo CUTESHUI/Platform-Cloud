@@ -10,6 +10,7 @@
     </parent>
 
     <artifactId>platform-channel</artifactId>
+    <packaging>jar</packaging>
     <name>platform-channel</name>
     <description>渠道服务</description>
 
