@@ -1,5 +1,7 @@
 package com.shui.controller;
 
+import com.alibaba.csp.sentinel.annotation.SentinelResource;
+import com.alibaba.csp.sentinel.slots.block.BlockException;
 import com.shui.common.utils.PageUtils;
 import com.shui.common.utils.R;
 import com.shui.entity.TimeEntity;
@@ -30,10 +32,15 @@ public class TimeController {
      * 列表
      */
     @RequestMapping("/list")
+    @SentinelResource(value = "getByCode", blockHandler = "handleException")
     public R list(@RequestParam Map<String, Object> params) {
         PageUtils page = timeService.queryPage(params);
 
         return R.ok().put("page", page);
+    }
+
+    public R handleException(Map<String, Object> params, BlockException ex){
+        return R.error("达到阈值了,不要再访问了!");
     }
 
 

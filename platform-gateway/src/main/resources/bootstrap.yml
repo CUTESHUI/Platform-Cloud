@@ -47,3 +47,17 @@ spring:
           uri: lb://platform-channel
           predicates:
             - Path=/channel/**
+
+platform:
+  swagger: #聚合文档配置
+    routes:
+      - name: platform-study服务
+        location: /study
+      - name: platform-question服务
+        location: /question
+      - name: platform-member服务
+        location: /member
+      - name: platform-content服务
+        location: /content
+      - name: platform-channel服务
+        location: /channel

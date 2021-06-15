@@ -14,7 +14,30 @@
     <name>platform-gateway</name>
     <description>网关</description>
 
+    <properties>
+        <swagger2>2.9.2</swagger2>
+        <knife4j>2.0.4</knife4j>
+        <lombok>1.18.12</lombok>
+    </properties>
+
     <dependencies>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <version>${swagger2}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.xiaoymin</groupId>
+            <artifactId>knife4j-spring-boot-starter</artifactId>
+            <version>${knife4j}</version>
+        </dependency>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
