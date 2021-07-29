@@ -17,16 +17,9 @@
     <properties>
         <swagger2>2.9.2</swagger2>
         <knife4j>2.0.4</knife4j>
-        <lombok>1.18.12</lombok>
     </properties>
 
     <dependencies>
-
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>${lombok}</version>
-        </dependency>
 
         <dependency>
             <groupId>io.springfox</groupId>
